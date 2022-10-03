@@ -1,0 +1,22 @@
+EJS
+https://ejs.co/
+
+EJS Layouts
+https://www.npmjs.com/package/express-ejs-layouts
+
+Extensão do VS Code para EJS
+EJS language support
+
+Fetch API
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+jQuery API
+https://api.jquery.com/
+
+jQuery Validation Plugin
+https://jqueryvalidation.org/
+https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods
+https://jqueryvalidation.org/reference/
+https://jqueryvalidation.org/category/methods/
+https://jqueryvalidation.org/category/plugin/
+https://jqueryvalidation.org/category/validator/
