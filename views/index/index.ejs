@@ -1,109 +1,202 @@
-﻿<form id="form">
-	<div>
-		<label for="nome">Nome</label>
-		<input type="text" id="nome" name="nome" maxlength="50" />
-	</div>
+<div class="secao1">
 
-	<div>
-		<label for="email">E-mail</label>
-		<input type="email" id="email" name="email" maxlength="50" />
-	</div>
+    <div class="secao1um">
 
-	<div>
-		<label for="foto">Foto</label>
-		<input type="file" id="foto" name="foto" accept="image/*" />
-	</div>
+        <h1 class="primtitle">
+            Bem-Vindo
+        </h1>
 
-	<div>
-		<button type="submit">Criar Pessoa</button>
-	</div>
-</form>
+        <p class="primsub">
+            Somos a YachtLife, loja do mercado de embarcações mais luxuosas do mundo!
+        </p>
 
-<!--
-	jQuery
+        <div class="container-fluid">
 
-	jQuery API
-	https://api.jquery.com/
--->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <div class="conteudo1">
 
-<!--
-	jQuery Validation
+                <div class="row">
 
-	jQuery Validation Plugin
-	https://jqueryvalidation.org/
-	https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods
-	https://jqueryvalidation.org/category/methods/
-	https://jqueryvalidation.org/category/plugin/
-	https://jqueryvalidation.org/category/validator/
--->
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/localization/messages_pt_BR.min.js"></script>
+                    <div class="col-sm-6">
 
-<!--
-	Isso é só um helper para podermos descobrir quantos fetch() estão em execução!
 
-	Ele funciona da mesma forma que a Fetch API original, só que cria uma variável
-	global fetchAtivo, para contar quantos fetch() estão em execução :)
 
-	Documentação da Fetch API original:
-	https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
--->
-<script src="/public/js/fetch.js"></script>
 
-<script type="text/javascript">
+                        <img class="sunset" src="/public/img/content-creation-agency-sydney.jpg" alt="yacht" width="600">
 
-	$("#form").validate({
-		rules: {
-			// Aqui o que vale é o name, não o id!
-			nome: {
-				required: true,
-				minlength: 3
-			},
-			email: {
-				required: true
-			},
-			foto: {
-				required: true
-			}
-		},
 
-		submitHandler: function (form) {
-			// Não pode simplesmente fazer submitHandler: criarPessoa, porque criarPessoa() é async... :(
-			criarPessoa(form);
-		}
-	});
 
-	async function criarPessoa(form) {
-		// Vamos prevenir cliques duplos/acidentais :)
-		if (fetchAtivo) {
-			return;
-		}
+                    </div>
+                    <div class="col-sm-6">
 
-		let opcoes = {
-			method: "POST",
-			// Esta forma não depende do jQuery, não precisa configurar o header e
-			// ainda permite o envio de arquivos! Mas precisa de uma linha de configuração
-			// a mais do lado do Node.js!
-		    body: new FormData(form)
-		};
 
-		try {
-			let response = await fetch("/criarPessoa", opcoes);
+                        <p class="primtexto">
+                            xxxxxxxxxxxxxxxxxxxxxxxx
+                            xxxxxxxxxxxxxxxxxxxxxxxx
+                            xxxxxxxxxxxxxxxxxxxxxxxx
+                            xxxxxxxxxxxxxxxxxxxxxxxx
+                            xxxxxxxxxxxxxxxxxxxxxxxx
+                            xxxxxxxxxxxxxxxxxxxxxxxx
+                            xxxxxxxxxxxxxxxxxxxxxxxx
+                            xxxxxxxxxxxxxxxxxxxxxxxx
+                        </p>
 
-			if (response.ok) {
-				// Limpa os campos para facilitar a criação da próxima pessoa.
-				form.reset();
-				// Limpa os erros e sucessos.
-				$(form).validate().resetForm();
 
-				alert("Pessoa criada com sucesso!");
-			} else {
-				alert("Erro ao criar a pessoa!");
-			}
-		} catch (ex) {
-			alert("Erro de rede: " + ex.message);
-		}
-	}
-</script>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="carrosel">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/public/img/yacht1upd.jpg" class="d-block w-100" alt="yacht1img" width="">
+                    <div class="carousel-caption d-none d-md-block">
+                            
+                            <button type="button" class="botao" href="embarcacoes.ejs">Conheça nossas embarcações!</button>
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/public/img/yacht2.jpg" class="d-block w-100" alt="yacht2img" width="">
+                    <div class="carousel-caption d-none d-md-block">                          
+                        <p class="textmin">Os melhores yachts do mundo...</p>
+                        </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/public/img/yacht3.jpg" class="d-block w-100" alt="yacht3img" width="">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p class="textmin">na palma de sua mão!</p>
+                        </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+<%- contentFor("head") %>
+<style>
+    .limitador {
+        max-width: 2000px;
+        margin: 0px auto;
+    }
+
+    .primtitle {
+        text-align: center;
+        color: rgb(202, 190, 13);
+        font-weight: bold;
+    }
+
+    .primsub {
+        text-align: center;
+        margin-top: 15px;
+        color: rgb(202, 190, 13);
+        font-weight: bold;
+    }
+
+    .conteudo1 {
+        margin-top: 30px;
+    }
+
+    .primtexto {
+        margin-top: 150px;
+        margin-left: 50px;
+    }
+
+
+
+    .dababy {
+        padding: 2px 10px;
+        background-color: black;
+        color: white;
+
+    }
+
+    .logo1 {
+        margin-right: 85px;
+    }
+
+    .secao1um {
+        background-color: rgb(236, 235, 235);
+        padding-top: 20px;
+        padding-bottom: 30px;
+
+    }
+
+    .sunset {
+        border-radius: 10px;
+        margin-left: 60px;
+    }
+
+    .carrosel-inner {
+        max-height: 50px;
+    }
+
+    .nav-link {
+        font-size: 30px;
+        margin-left: 65px;
+        text-decoration: none;
+        text-align: center;
+        margin-right: 50px;
+
+    }
+
+    .lgsite2 {
+        margin-top: 8px;
+    }
+
+    .social {
+        margin-left: 430px;
+        margin-top: 8px;
+    }
+
+    .botao{
+        background-color: black;
+        color: gold;
+        padding: 5px 10px;
+        width: fit-content;
+        border-radius: 40px;
+        font-size: 50px;
+        margin-bottom: 170px;
+    }
+
+    .textmin{
+
+        font-size: 40px;
+        color: gold;
+        font-weight: bold;
+    }
+
+    
+</style>

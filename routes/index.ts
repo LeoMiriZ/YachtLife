@@ -17,6 +17,14 @@ class IndexRoute {
 		res.render("index/index");
 	}
 
+	public async login(req: app.Request, res: app.Response) {
+		res.render("index/login");
+	}
+
+	public async embarcacoes(req: app.Request, res: app.Response) {
+		res.render("index/embarcacoes");
+	}
+
 	@app.http.post()
 	// Configuração adicional para poder receber FormData e/ou arquivos.
 	@app.route.formData()
