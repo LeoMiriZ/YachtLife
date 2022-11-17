@@ -21,7 +21,8 @@
 
 
 
-                        <img class="sunset" src="/public/img/content-creation-agency-sydney.jpg" alt="yacht" width="600">
+                        <img class="sunset" src="/public/img/content-creation-agency-sydney.jpg" alt="yacht"
+                            width="600">
 
 
 
@@ -30,11 +31,14 @@
 
 
                         <p class="primtexto">
-                           Nosso compromisso é prover aos nossos clientes uma
-                           experiência diferenciada com o aluguel e venda de
-                           embarcações luxuosas. Cuidamos de todo o processo,
-                           desde o primeiro contato do cliente com o site, até
-                           a entrega da embarcação.
+                            Nosso compromisso é prover aos nossos clientes uma
+                            </br>
+                            experiência diferenciada com o aluguel e venda de
+                            embarcações
+                            luxuosas. Cuidamos de todo o processo,
+                            desde o primeiro
+                            contato do cliente com o site, até
+                            a entrega da embarcação.
                         </p>
 
 
@@ -54,8 +58,8 @@
 
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                     aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
@@ -63,25 +67,20 @@
             </div>
 
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/public/img/yacht1upd.jpg" class="d-block w-100" alt="yacht1img" width="">
-                    <div class="carousel-caption d-none d-md-block">
-                            
-                            <button type="button" class="botao" href="embarcacoes.ejs">Conheça nossas embarcações!</button>
-                        
+                <div class="carousel-item active" style="background-image: url(/public/img/yacht1upd.jpg);">
+                    <div class="conteudo-carousel">
+                        <button type="button" class="botao" href="embarcacoes.ejs">Conheça nossas embarcações!</button>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="/public/img/yacht2.jpg" class="d-block w-100" alt="yacht2img" width="">
-                    <div class="carousel-caption d-none d-md-block">                          
-                        <p class="textmin">Os melhores yachts do mundo...</p>
-                        </div>
+                <div class="carousel-item" style="background-image: url(/public/img/yacht2.jpg);">
+                    <div class="conteudo-carousel">
+                       <p class="textmin">Os melhores yachts do mundo...</p>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="/public/img/yacht3.jpg" class="d-block w-100" alt="yacht3img" width="">
-                    <div class="carousel-caption d-none d-md-block">
-                        <p class="textmin">na palma de sua mão!</p>
-                        </div>
+                <div class="carousel-item" style="background-image: url(/public/img/yacht3.jpg);">
+                    <div class="conteudo-carousel">
+                        <p class="textmin">na palma da sua mão!</p>
+                    </div>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -103,97 +102,150 @@
 </div>
 
 <%- contentFor("head") %>
-<style>
-    .limitador {
-        max-width: 2000px;
-        margin: 0px auto;
-    }
 
-    .primtitle {
-        text-align: center;
-        color: rgb(202, 190, 13);
-        font-weight: bold;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Josefin+Sans&display=swap" rel="stylesheet">
 
-    .primsub {
-        text-align: center;
-        margin-top: 15px;
-        color: rgb(202, 190, 13);
-        font-weight: bold;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Fjalla+One&family=Josefin+Sans&display=swap"
+        rel="stylesheet">
 
-    .conteudo1 {
-        margin-top: 30px;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cinzel&family=Fjalla+One&family=Josefin+Sans&display=swap"
+        rel="stylesheet">
 
-    .primtexto {
-        margin-top: 150px;
-        margin-left: 50px;
-    }
+    <style>
+        
+        .limitador {
+            max-width: 2000px;
+            width: 100%;
+            margin: 0px auto;
+            
+        }
+
+        .col-sm-6{
+            text-align: center;
+        }
+
+        .carousel-item {
+            background-position: center;
+            background-size: cover;
+        }
+
+        .conteudo-carousel {
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img{
+
+            max-width: 100%;
+        }
+
+        .primtitle {
+            text-align: center;
+            color: rgb(202, 190, 13);
+            font-weight: bold;
+            font-family: 'Aboreto', cursive;
+            font-family: 'Cinzel', serif;
+            font-family: 'Fjalla One', sans-serif;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        .primsub {
+            text-align: center;
+            margin-top: 15px;
+            color: rgb(202, 190, 13);
+            font-weight: bold;
+            font-family: 'Aboreto', cursive;
+            font-family: 'Cinzel', serif;
+            font-family: 'Fjalla One', sans-serif;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        .conteudo1 {
+            margin-top: 30px;
+        }
+
+        .primtexto {
+            margin-top: 110px;
+            font-size: 23px;
+            font-family: 'Aboreto', cursive;
+            font-family: 'Fjalla One', sans-serif;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: bold;
+        }
 
 
 
-    .dababy {
-        padding: 2px 10px;
-        background-color: black;
-        color: white;
+        .dababy {
+            padding: 2px 10px;
+            background-color: black;
+            color: white;
 
-    }
+        }
 
-    .logo1 {
-        margin-right: 85px;
-    }
+        .logo1 {
+            margin-right: 85px;
+        }
 
-    .secao1um {
-        background-color: rgb(236, 235, 235);
-        padding-top: 20px;
-        padding-bottom: 30px;
+        .secao1um {
+            background-color: rgb(236, 235, 235);
+            padding-top: 20px;
+            padding-bottom: 30px;
 
-    }
+        }
 
-    .sunset {
-        border-radius: 10px;
-        margin-left: 60px;
-    }
+        .sunset {
+            border-radius: 10px;
+        }
 
-    .carrosel-inner {
-        max-height: 50px;
-    }
+        .carrosel-inner {
+            max-height: 50px;
+        }
 
-    .nav-link {
-        font-size: 30px;
-        margin-left: 65px;
-        text-decoration: none;
-        text-align: center;
-        margin-right: 50px;
+        .nav-link {
+            font-size: 30px;
+            margin-left: 65px;
+            text-decoration: none;
+            text-align: center;
+            margin-right: 50px;
 
-    }
+        }
 
-    .lgsite2 {
-        margin-top: 8px;
-    }
+        .lgsite2 {
+            margin-top: 8px;
+            text-align: left;
+        }
 
-    .social {
-        margin-left: 430px;
-        margin-top: 8px;
-    }
+        .social {
+            margin-left: 440px;
+            margin-top: 8px;
+        }
 
-    .botao{
-        background-color: black;
-        color: gold;
-        padding: 5px 10px;
-        width: fit-content;
-        border-radius: 40px;
-        font-size: 50px;
-        margin-bottom: 170px;
-    }
+        .botao {
+            background-color: black;
+            color: gold;
+            padding: 5px 10px;
+            width: fit-content;
+            border-radius: 40px;
+            font-size: 50px;
+        }
 
-    .textmin{
+        .textmin {
 
-        font-size: 40px;
-        color: gold;
-        font-weight: bold;
-    }
-
-    
-</style>
+            font-size: 40px;
+            color: gold;
+            font-weight: bold;
+            margin-bottom: 400px;
+            font-family: 'Aboreto', cursive;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+    </style>
