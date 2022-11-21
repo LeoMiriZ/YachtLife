@@ -17,19 +17,11 @@
                 <div class="row">
 
                     <div class="col-sm-6">
-
-
-
-
                         <img class="sunset" src="/public/img/content-creation-agency-sydney.jpg" alt="yacht"
                             width="600">
-
-
-
                     </div>
+
                     <div class="col-sm-6">
-
-
                         <p class="primtexto">
                             Nosso compromisso é prover aos nossos clientes uma
                             </br>
@@ -40,41 +32,28 @@
                             contato do cliente com o site, até
                             a entrega da embarcação.
                         </p>
-
-
                     </div>
-
-
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <div class="carrosel">
-
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active" style="background-image: url(/public/img/yacht1upd.jpg);">
                     <div class="conteudo-carousel">
-                        <button type="button" class="botao" href="embarcacoes.ejs">Conheça nossas embarcações!</button>
+                        <button type="button" class="botao" onclick="window.open('embarcacoes')" >Conheça nossas embarcações!</button>
                     </div>
                 </div>
                 <div class="carousel-item" style="background-image: url(/public/img/yacht2.jpg);">
                     <div class="conteudo-carousel">
-                       <p class="textmin">Os melhores yachts do mundo...</p>
+                        <p class="textmin">Os melhores yachts do mundo...</p>
                     </div>
                 </div>
                 <div class="carousel-item" style="background-image: url(/public/img/yacht3.jpg);">
@@ -83,51 +62,22 @@
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="sr-only">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="sr-only">Next</span>
             </button>
-
-
-
         </div>
-
     </div>
 </div>
 
 <%- contentFor("head") %>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Josefin+Sans&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Fjalla+One&family=Josefin+Sans&display=swap"
-        rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cinzel&family=Fjalla+One&family=Josefin+Sans&display=swap"
-        rel="stylesheet">
-
     <style>
-        
-        .limitador {
-            max-width: 2000px;
-            width: 100%;
-            margin: 0px auto;
-            
-        }
-
-        .col-sm-6{
+        .col-sm-6 {
             text-align: center;
         }
 
@@ -142,11 +92,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-
-        .img{
-
-            max-width: 100%;
         }
 
         .primtitle {
@@ -183,19 +128,6 @@
             font-weight: bold;
         }
 
-
-
-        .dababy {
-            padding: 2px 10px;
-            background-color: black;
-            color: white;
-
-        }
-
-        .logo1 {
-            margin-right: 85px;
-        }
-
         .secao1um {
             background-color: rgb(236, 235, 235);
             padding-top: 20px;
@@ -209,25 +141,6 @@
 
         .carrosel-inner {
             max-height: 50px;
-        }
-
-        .nav-link {
-            font-size: 30px;
-            margin-left: 65px;
-            text-decoration: none;
-            text-align: center;
-            margin-right: 50px;
-
-        }
-
-        .lgsite2 {
-            margin-top: 8px;
-            text-align: left;
-        }
-
-        .social {
-            margin-left: 440px;
-            margin-top: 8px;
         }
 
         .botao {
