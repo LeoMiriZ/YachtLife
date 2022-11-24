@@ -2,37 +2,40 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6">
-                <h2>
-                    MADSUMMER
-                </h2>
+            <% for (let i=0; i < lista.length; i++) { %>
+                <div class="col-sm-6">
+                    <h2>
+                        <%= lista[i].nome %>
+                    </h2>
 
-                <img class="barco" src="/public/img/Jeff-Brown-12655.jpg" alt="madsummer" width="500">
-            </div>
+                    <p>
+                        Tamanho: <%= lista[i].tamanho %>
+                    </p>
 
-            <div class="col-sm-6">
-                <h2>
-                    TATIANA
-                </h2>
+                    <p>
+                        Peso: <%= lista[i].peso %>
+                    </p>
 
-                <img class="barco" src="/public/img/7dd9af90-de11-11ea-ae0b-750b7d88fab7-Tatiana-yacht-Bilgin-2.jpg" alt="tatiana" width="500">
-            </div>
+                    <p>
+                        Tripulantes: <%= lista[i].tripulantes %>
+                    </p>
 
-            <div class="col-sm-6">
-                <h2>
-                    BOADICEIA
-                </h2>
+                    <p>
+                        Cabines: <%= lista[i].cabines %>
+                    </p>
 
-                <img class="barco" src="/public/img/Amels_yacht_for_charter_Boadicea_6997.jpg" alt="boadiceia" width="500">
-            </div>
+                    <p>
+                        Ano: <%= lista[i].ano %>
+                    </p>
 
-            <div class="col-sm-6">
-                <h2>
-                    AIR
-                </h2>
+                    <p>
+                        Preço: $ <%= lista[i].preco %>
+                    </p>
 
-                <img class="barco" src="/public/img/[81m-Yacht-AIR]-6185-163.jpg" alt="air" width="500">
-            </div>
+                    <img class="barco" src="/public/img/embarcacoes/<%= lista[i].idembarcacao %>.jpg" width="500">
+                </div>
+                <% } %>
+
         </div>
     </div>
 
@@ -40,15 +43,14 @@
 
 <%- contentFor("head") %>
 
-<style type="text/css">
+    <style type="text/css">
+        .tela {
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
 
-    .tela {
-        text-align: center;
-        padding-top: 20px;
-        padding-bottom: 50px;
-    }
-
-    .barco {
-        border-radius: 20px;
-    }
-</style>
+        .barco {
+            border-radius: 20px;
+        }
+    </style>
