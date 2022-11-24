@@ -2,215 +2,387 @@
     <div class="container-fluid">
         <div class="title">Cadastre sua embarcação</div>
         <div class="content">
-            <form action="#">
+            <form action="#" id="form">
                 <div class="user-details">
                     <div class="input-box">
-                        <span class="details">Tamanho</span>
-                        <input type="number" id="inputTam" placeholder="Insira o tamanho de sua embarcação" required>
+                        <label class="details" for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" maxlength="50" placeholder="Insira o nome de sua embarcação">
                     </div>
                     <div class="input-box">
-                        <span class="details">Peso</span>
-                        <input type="number" id="inputPes" placeholder="Insira o peso de sua embarcação" required>
+                        <label class="details" for="inputTam">Tamanho</label>
+                        <input type="number" id="inputTam" name="tamanho" placeholder="Insira o tamanho de sua embarcação (em pés)" min="1">
                     </div>
                     <div class="input-box">
-                        <span class="details">Tripulantes</span>
-                        <input type="number" id="inputTri" placeholder="Quantidade de tripulantes suportada" required>
+                        <label class="details">Peso</label>
+                        <input type="number" id="inputPes" name="peso" placeholder="Insira o peso de sua embarcação (em kg)" min="1">
                     </div>
                     <div class="input-box">
-                        <span class="details">Cabines</span>
-                        <input type="number" id="inputCab" placeholder="Quantidade de cabines de sua embarcação" required>
+                        <label class="details">Tripulantes</label>
+                        <input type="number" id="inputTri" name="tripulantes" placeholder="Quantidade de tripulantes suportada">
                     </div>
                     <div class="input-box">
-                        <span class="details">Ano de fabricação</span>
-                        <input type="number" id="inputAno" placeholder="Insira a data de fabricação da embarcação" required>
+                        <label class="details">Cabines</label>
+                        <input type="number" id="inputCab" name="cabines" placeholder="Quantidade de cabines de sua embarcação">
                     </div>
                     <div class="input-box">
-                        <span class="details">Preço</span>
-                        <input type="number" id="inputPre" placeholder="Insira o preço de sua embarcação" required>
+                        <label class="details">Ano de fabricação</label>
+                        <input type="number" id="inputAno" name="ano" placeholder="Insira a data de fabricação da embarcação">
+                    </div>
+                    <div class="input-box">
+                        <label class="details">Preço</label>
+                        <input type="number" id="inputPre" name="preco" placeholder="Insira o preço de sua embarcação (em reais)">
+                    </div>
+                    <div class="input-box">
+                        <label class="details" for="foto">Foto</label>
+                        <input type="file" id="foto" name="foto" accept="image/jpeg">
                     </div>
                 </div>
                 <div class="gender-details">
-                    <input type="radio" name="gender" id="dot-1">
-                    <input type="radio" name="gender" id="dot-2">
-                    <input type="radio" name="gender" id="dot-3">
-                    <span class="gender-title">Escolha um:</span>
-                    <div class="category">
-                        <label for="dot-1">
-                            <span class="dot one"></span>
-                            <span class="gender" id="inputAlu">Alugar</span>
-                        </label>
-                        <label for="dot-2">
-                            <span class="dot two"></span>
-                            <span class="gender" id="inputVen">Vender</span>
-                        </label>
-                        <label for="dot-3">
-                            <span class="dot three"></span>
-                            <span class="gender" id="inputAov">Alugar/Vender</span>
-                        </label>
+                    <div class="input-box">
+                        <label class="details" for="idmodalidade">Modalidade</label>
+                        <select id="idmodalidade" name="idmodalidade">
+                            <option value="">Selecione...</option>
+                            <option value="1">Aluguel</option>
+                            <option value="2">Venda</option>
+                            <option value="3">Aluguel/Venda</option>
+                        </select>
                     </div>
                 </div>
                 <div class="button">
                     <input type="submit" value="Cadastrar">
                 </div>
+                <div class="resultado" id="inputRes">
+                </div>
             </form>
         </div>
+
+
     </div>
 </div>
 
+<!--
+	jQuery
+
+	jQuery API
+	https://api.jquery.com/
+-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!--
+	jQuery Validation
+
+	jQuery Validation Plugin
+	https://jqueryvalidation.org/
+	https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods
+	https://jqueryvalidation.org/category/methods/
+	https://jqueryvalidation.org/category/plugin/
+	https://jqueryvalidation.org/category/validator/
+-->
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/localization/messages_pt_BR.min.js"></script>
+
+<script>
+
+    $("#form").validate({
+		rules: {
+			// Aqui o que vale é o name, não o id!
+			nome: {
+				required: true,
+				minlength: 3
+			},
+			tamanho: {
+				required: true
+			},
+            peso: {
+				required: true
+			},
+            tripulantes: {
+				required: true
+			},
+            cabines: {
+				required: true
+			},
+            ano: {
+				required: true
+			},
+            preco: {
+				required: true
+			},
+            idmodalidade: {
+				required: true
+			},
+            foto: {
+				required: true
+			}
+		},
+
+		submitHandler: function (form) {
+			// Não pode simplesmente fazer submitHandler: criarEmbarcacao, porque criarEmbarcacao() é async... :(
+			criarEmbarcacao(form);
+		}
+	});
+
+	async function criarEmbarcacao(form) {
+		let opcoes = {
+			method: "POST",
+			body: new FormData(form)
+		};
+
+		try {
+			let response = await fetch("/criarEmbarcacao", opcoes);
+
+			if (response.ok) {
+				// Limpa os campos para facilitar a criação da próxima pessoa.
+				form.reset();
+				// Limpa os erros e sucessos.
+				$(form).validate().resetForm();
+
+				alert("Embarcação criada com sucesso!");
+			} else {
+				alert("Erro ao criar a embarcação!");
+			}
+		} catch (ex) {
+			alert("Erro de rede: " + ex.message);
+		}
+	}
+    function verificar() {
+
+        let inputTam = document.getElementById("inputTam");
+
+        let inputPes = document.getElementById("inputPes");
+
+        let inputTri = document.getElementById("inputTri");
+
+        let inputCab = document.getElementById("inputCab");
+
+        let inputAno = document.getElementById("inputAno");
+
+        let inputPre = document.getElementById("inputPre");
+
+        let inputRes = document.getElementById("inputRes");
+
+        let tamanho = parseInt(inputTam.value);
+
+        let peso = parseInt(inputPes.value);
+
+        let tripulantes = parseInt(inputTri.value);
+
+        let cabines = parseInt(inputCab.value);
+
+        let ano = parseInt(inputAno.value);
+
+        let preco = parseInt(inputPre.value);
+
+
+
+        if (isNaN(tamanho) || tamanho < 0 || tamanho > 512) {
+
+            inputRes.textContent = "Número inválido";
+
+        } else if (isNaN(peso) || peso < 0) {
+
+            inputRes.textContent = "Número inválido";
+
+
+        } else if (isNaN(tripulantes) || tripulantes < 0) {
+
+            inputRes.textContent = "Número inválido";
+
+
+        } else if (isNaN(cabines) || cabines < 0) {
+
+            inputRes.textContent = "Número inválido";
+
+
+        } else if (isNaN(ano) || ano < 2000 || ano > 2023) {
+
+            inputRes.textContent = "Número inválido";
+
+
+        } else if (isNaN(preco) || preco < 0) {
+
+            inputRes.textContent = "Número inválido";
+        }
+
+
+        let resultado;
+
+        inputRes.textContent = resultado;
+
+
+    }
+
+</script>
+
 <%- contentFor("head") %>
-<style type="text/css">
-    .container {
-        max-width: 700px;
-        width: 100%;
-        background-color: #fff;
-        padding: 25px 30px;
-        border-radius: 5px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    .container .title {
-        font-size: 25px;
-        font-weight: 500;
-        position: relative;
-    }
-
-    .container .title::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 3px;
-        width: 30px;
-        border-radius: 5px;
-        background: linear-gradient(135deg, #0f0f0f, gold);
-    }
-
-    .content form .user-details {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin: 20px 0 12px 0;
-    }
-
-    form .user-details .input-box {
-        margin-bottom: 15px;
-        width: calc(100% / 2 - 20px);
-    }
-
-    form .input-box span.details {
-        display: block;
-        font-weight: 500;
-        margin-bottom: 5px;
-    }
-
-    .user-details .input-box input {
-        height: 45px;
-        width: 100%;
-        outline: none;
-        font-size: 16px;
-        border-radius: 5px;
-        padding-left: 15px;
-        border: 1px solid #ccc;
-        border-bottom-width: 2px;
-        transition: all 0.3s ease;
-    }
-
-    .user-details .input-box input:focus,
-    .user-details .input-box input:valid {
-        border-color: rgb(184, 159, 21)
-    }
-
-    form .gender-details .gender-title {
-        font-size: 20px;
-        font-weight: 500;
-    }
-
-    form .category {
-        display: flex;
-        width: 80%;
-        margin: 14px 0;
-        justify-content: space-between;
-    }
-
-    form .category label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    form .category label .dot {
-        height: 18px;
-        width: 18px;
-        border-radius: 50%;
-        margin-right: 10px;
-        background: #d9d9d9;
-        border: 5px solid transparent;
-        transition: all 0.3s ease;
-    }
-
-    #dot-1:checked~.category label .one,
-    #dot-2:checked~.category label .two,
-    #dot-3:checked~.category label .three {
-        background: rgb(138, 122, 34);
-        border-color: #d9d9d9;
-    }
-
-    form input[type="radio"] {
-        display: none;
-    }
-
-    form .button {
-        height: 45px;
-        margin: 35px 0
-    }
-
-    form .button input {
-        height: 100%;
-        width: 100%;
-        border-radius: 5px;
-        border: none;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 500;
-        letter-spacing: 1px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: linear-gradient(135deg, #0d0d0e, gold);
-    }
-
-    @media(max-width: 584px) {
+    <style type="text/css">
         .container {
-            max-width: 100%;
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .resultado {
+
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .container .title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #0f0f0f, gold);
+        }
+
+        .content form .user-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0 12px 0;
         }
 
         form .user-details .input-box {
             margin-bottom: 15px;
+            width: calc(100% / 2 - 20px);
+        }
+
+        form .input-box span.details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .user-details .input-box input {
+            height: 45px;
             width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .user-details .input-box input:focus,
+        .user-details .input-box input:valid {
+            border-color: rgb(184, 159, 21)
+        }
+
+        form .gender-details .gender-title {
+            font-size: 20px;
+            font-weight: 500;
         }
 
         form .category {
+            display: flex;
+            width: 80%;
+            margin: 14px 0;
+            justify-content: space-between;
+        }
+
+        form .category label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        form .category label .dot {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background: #d9d9d9;
+            border: 5px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        #dot-1:checked~.category label .one,
+        #dot-2:checked~.category label .two,
+        #dot-3:checked~.category label .three {
+            background: rgb(138, 122, 34);
+            border-color: #d9d9d9;
+        }
+
+        form input[type="radio"] {
+            display: none;
+        }
+
+        form .button {
+            height: 45px;
+            margin: 35px 0
+        }
+
+        form .button input {
+            height: 100%;
             width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #0d0d0e, gold);
         }
 
-        .content form .user-details {
-            max-height: 300px;
-            overflow-y: scroll;
+        .title{
+
+            text-align: left;
+            font-size: 30px;
+            padding-bottom: 20px;
         }
 
-        .user-details::-webkit-scrollbar {
-            width: 5px;
+        @media(max-width: 584px) {
+            .container {
+                max-width: 100%;
+            }
+
+            form .user-details .input-box {
+                margin-bottom: 15px;
+                width: 100%;
+            }
+
+            form .category {
+                width: 100%;
+            }
+
+            .content form .user-details {
+                max-height: 300px;
+                overflow-y: scroll;
+            }
+
+            .user-details::-webkit-scrollbar {
+                width: 5px;
+            }
         }
-    }
 
-    @media(max-width: 459px) {
-        .container .content .category {
-            flex-direction: column;
+        @media(max-width: 459px) {
+            .container .content .category {
+                flex-direction: column;
+            }
         }
-    }
 
-    .tela {
-        padding-top: 100px;
-        padding-bottom: 127px;
-    }
-
-</style>
+        .tela {
+            padding-top: 100px;
+            padding-bottom: 127px;
+        }
+    </style>
