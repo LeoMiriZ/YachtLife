@@ -4,36 +4,49 @@
         <div class="row">
             <% for (let i=0; i < lista.length; i++) { %>
                 <div class="col-sm-6">
-                    <h2>
+                    <h2 class="fontes">
                         <%= lista[i].nome %>
                     </h2>
 
-                    <p>
-                        Tamanho: <%= lista[i].tamanho %>
-                    </p>
+                    <div class="barco" style="background-image: url('<%- root %>/public/img/embarcacoes/<%= lista[i].idembarcacao %>.jpg');"></div>
 
-                    <p>
-                        Peso: <%= lista[i].peso %>
-                    </p>
+                    <div class="aling">
+                        <div class="row">
+                            <div class="col-sm-4 offset-sm-2">
 
-                    <p>
-                        Tripulantes: <%= lista[i].tripulantes %>
-                    </p>
+                                <p class="fontes">
+                                    Tamanho: <%= lista[i].tamanho %>
+                                </p>
 
-                    <p>
-                        Cabines: <%= lista[i].cabines %>
-                    </p>
+                                <p class="fontes">
+                                    Peso: <%= lista[i].peso %>
+                                </p>
 
-                    <p>
-                        Ano: <%= lista[i].ano %>
-                    </p>
+                                <p class="fontes">
+                                    Tripulantes: <%= lista[i].tripulantes %>
+                                </p>
 
-                    <p>
-                        Preço: $ <%= lista[i].preco %>
-                    </p>
+                            </div>
 
-                    <img class="barco" src="/public/img/embarcacoes/<%= lista[i].idembarcacao %>.jpg" width="500">
+                            <div class="col-sm-4">
+
+                                <p class="fontes">
+                                    Cabines: <%= lista[i].cabines %>
+                                </p>
+
+                                <p class="fontes">
+                                    Ano: <%= lista[i].ano %>
+                                </p>
+
+                                <p class="fontes">
+                                    Preço: $ <%= lista[i].preco %>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <% } %>
 
         </div>
@@ -52,5 +65,24 @@
 
         .barco {
             border-radius: 20px;
+            width: 100%;
+            height: 300px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .aling{
+            margin-top: 20px;
+         margin-bottom: 25px;   
+        }
+
+        .fontes{
+
+            font-weight: bold;
+            font-family: 'Aboreto', cursive;
+            font-family: 'Cinzel', serif;
+            font-family: 'Fjalla One', sans-serif;
+            font-family: 'Josefin Sans', sans-serif;
         }
     </style>
