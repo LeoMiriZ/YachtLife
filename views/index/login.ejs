@@ -130,7 +130,7 @@
 		};
 
 		try {
-			let response = await fetch("/criarEmbarcacao", opcoes);
+			let response = await fetch("<%- root %>/criarEmbarcacao", opcoes);
 
 			if (response.ok) {
 				// Limpa os campos para facilitar a criação da próxima pessoa.
